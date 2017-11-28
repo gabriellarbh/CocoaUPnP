@@ -19,9 +19,13 @@
 {
     if (!completion) { return; }
 
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    });
+    
     [manager GET:url.absoluteString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData *data) {
         UPPDeviceParser *parser = [[UPPDeviceParser alloc] initWithXMLData:data];
         [parser parseWithBaseURL:url completion:^(NSArray *devices, NSError *error) {
