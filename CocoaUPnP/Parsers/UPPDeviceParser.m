@@ -20,6 +20,8 @@
     if (!completion) { return; }
 
     static dispatch_once_t onceToken;
+    static AFHTTPSessionManager *manager = nil;
+    
     dispatch_once(&onceToken, ^{
         manager = [AFHTTPSessionManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
