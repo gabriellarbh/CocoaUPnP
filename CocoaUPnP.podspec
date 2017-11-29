@@ -14,11 +14,11 @@ Pod::Spec.new do |s|
                    It features a comprehensive suite of unit tests
                    DESC
 
-  s.homepage     = "https://github.com/arcam/CocoaUPnP"
+  s.homepage     = "https://github.com/wangleeking/CocoaUPnP"
   s.license      = "MIT"
   s.author       = { "Paul Williamson" => "PaulW@arcam.co.uk" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/arcam/CocoaUPnP.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/wangleeking/CocoaUPnP.git", :tag => s.version.to_s }
   s.source_files = "CocoaUPnP", "CocoaUPnP/**/*.{h,m}"
   s.requires_arc = true
   s.xcconfig     = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
